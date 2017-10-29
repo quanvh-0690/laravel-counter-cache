@@ -1,5 +1,9 @@
 # Laravel Package: Counter Cache
 Package Counter Cache for Laravel 5
+[![Latest Stable Version](https://poser.pugx.org/quankim/laravel-counter-cache/v/stable)](https://packagist.org/packages/quankim/laravel-counter-cache)
+[![Total Downloads](https://poser.pugx.org/quankim/laravel-counter-cache/downloads)](https://packagist.org/packages/quankim/laravel-counter-cache)
+[![Latest Unstable Version](https://poser.pugx.org/quankim/laravel-counter-cache/v/unstable)](https://packagist.org/packages/quankim/laravel-counter-cache)
+[![License](https://poser.pugx.org/quankim/laravel-counter-cache/license)](https://packagist.org/packages/quankim/laravel-counter-cache)
 ## Feature Overview
 * Increment counter automatically when creating a new record.
 * Decrement counter automatically when deleting a record.
