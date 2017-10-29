@@ -1,5 +1,6 @@
 # Laravel Package: Counter Cache
 Package Counter Cache for Laravel 5
+
 [![Latest Stable Version](https://poser.pugx.org/quankim/laravel-counter-cache/v/stable)](https://packagist.org/packages/quankim/laravel-counter-cache)
 [![Total Downloads](https://poser.pugx.org/quankim/laravel-counter-cache/downloads)](https://packagist.org/packages/quankim/laravel-counter-cache)
 [![Latest Unstable Version](https://poser.pugx.org/quankim/laravel-counter-cache/v/unstable)](https://packagist.org/packages/quankim/laravel-counter-cache)
