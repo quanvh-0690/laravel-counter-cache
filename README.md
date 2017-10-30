@@ -33,6 +33,7 @@ Table comments:
 ```php
 Schema::create('comments', function (Blueprint $table) {
       $table->increments('id');
+      $table->integer('product_id');
       $table->string('content');
       $table->integer('rating_value')->nullable();
       $table->timestamps();
