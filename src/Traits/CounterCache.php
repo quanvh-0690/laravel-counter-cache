@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 trait CounterCache
 {
+    protected static $isCreated = false;
+    
     /**
      * Override boot function in eloquent model
      */
@@ -13,6 +15,7 @@ trait CounterCache
         parent::boot();
         static::created(function ($model) {
             (new self)->runCounter($model, 'increment');
+            self::$isCreated = true;
         });
 
         static::saved(function ($model) {
@@ -53,26 +56,22 @@ trait CounterCache
      */
     protected function counterForRelation($model, $method, $counter, $type)
     {
+        $relation = $this->loadRelation($model, $method);
         foreach ($counter as $field => $option) {
             if (is_string($option) && $type) {
                 $model->$method()->$type($option);
             }
 
             if (is_array($option)) {
-                $relation = $this->loadRelation($model, $method);
-                if (isset($option['conditions'])) {
-                    $relation = $relation->where($option['conditions'])->first();
-                }
-
                 $counterMethod = $option['method'] ?? null;
-                if ($relation) {
-                    if ($counterMethod) {
-                        $relation->update([
-                            $field => $relation->$counterMethod(),
-                        ]);
-                    } elseif ($type) {
-                        $relation->$type($field);
-                    }
+                $conditions = $option['conditions'] ?? null;
+                if ($counterMethod && !self::$isCreated) {
+                    $newCount = $conditions ? $relation->$counterMethod($conditions) : $relation->$counterMethod();
+                    $relation->update([
+                        $field => $newCount,
+                    ]);
+                } elseif ($type) {
+                    $relation->$type($field);
                 }
             }
         }
