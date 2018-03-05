@@ -8,11 +8,10 @@ trait CounterCache
     protected static $isCreated = false;
     
     /**
-     * Override boot function in eloquent model
+     * Boot CounterCache
      */
-    protected static function boot()
+    protected static function bootCounterCache()
     {
-        parent::boot();
         static::created(function ($model) {
             (new self)->runCounter($model, 'increment');
             self::$isCreated = true;

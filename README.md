@@ -91,19 +91,6 @@ class Comment extends Model
 }
 
 ```
-if you use `boot()` function in Model Comment, you must define as below:
-```php
-use CounterCache {
-    boot as preBoot;
-}
-
-protected static function boot()
-{
-    self::preBoot();
-
-    // ...
-}
-```
 
 ### Add Conditions
 ```php
